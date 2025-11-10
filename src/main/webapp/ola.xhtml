@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h1>Olá #{bean.nomeCompleto}</h1>
+		<br />
+		Nome: <h:inputText value="#{bean.nome}"/>
+		<br />
+		Sobrenome: <h:inputText value="#{bean.sobrenome}" />
+		<br />
+		<h:commandButton value="Dizer Olá" action="#{bean.dizerOla}" />
+		<h:commandButton value="Voltar" action="hello" />
+		<br />
+		<ol>
+			<ui:repeat var="n" value="#{bean.nomes}" >
+				<li>#{n}</li>
+			</ui:repeat>
+		</ol>
+		Password: <h:inputSecret /><br />
+		Texto: <h:inputTextarea /><br />
+		Saída texto 1 <h:outputText value="outputText"/> <br/>
+		Saída texto 2 <h:outputFormat value="parametro {0} e parametro {1}">
+			<f:param value="#{bean.nome}"/>
+			<f:param value="#{bean.sobrenome}"/>
+		</h:outputFormat><br/>
+		Saída texto 3 <h:outputLabel value="label"/> <br/>
+		<h:graphicImage value="resources/ifba/images/image.png" width="200" height="100" /> <br/>
+		<h:outputLabel value="Time de futebol" for="times" />
+		<h:selectOneMenu id="times">
+			<f:selectItem itemValue="Corinthias"/>
+			<f:selectItem itemValue="Flamengo"/>
+			<f:selectItem itemValue="Vasco"/>
+		</h:selectOneMenu>
+		<br />
+		<h:outputLabel value="cidades" for="cidade" />
+		<h:selectManyMenu id="cidade" >
+			<f:selectItem itemValue="Brumado"/>
+			<f:selectItem itemValue="Aracatu"/>
+			<f:selectItem itemValue="Dom basilio"/>
+		</h:selectManyMenu>
+		<br />
+		<h:outputLabel value="Produtos" />
+		<h:selectOneListbox >
+			<f:selectItem itemValue="Arroz"/>
+			<f:selectItem itemValue="Feijão"/>
+			<f:selectItem itemValue="Açucar"/>
+		</h:selectOneListbox>
+		<br />
+		<h:outputLabel value="Produtos" />
+		<h:selectManyListbox >
+			<f:selectItem itemValue="Arroz"/>
+			<f:selectItem itemValue="Feijão"/>
+			<f:selectItem itemValue="Açucar"/>
+		</h:selectManyListbox>
+		<br />
+		<h:outputLabel value="Sexo" />
+		<h:selectOneRadio >
+			<f:selectItem itemValue="M" itemLabel="Masculino"/>
+			<f:selectItem itemValue="F" itemLabel="Feminino"/>
+		</h:selectOneRadio>
+		<h:selectBooleanCheckbox>
+			<f:selectItem itemValue="M" itemLabel="Masculino"/>
+			<f:selectItem itemValue="F" itemLabel="Feminino"/>
+		</h:selectBooleanCheckbox>
+
+
+	</h:form>
+</h:body>
+</html>

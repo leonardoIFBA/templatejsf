@@ -1,0 +1,23 @@
+package com.example.ifbademo.model;
+
+import java.util.List;
+
+import javax.persistence.*;
+import lombok.Data;
+
+@Entity
+@Data
+public class Produto extends AbstractEntity<Long>{
+    
+    private String nome;
+    private int qtdeMinima;
+    private int qtdeEstoque;
+    private String unidadeMedida;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_catregoria_fk")
+    private Categoria categoria;
+
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+    private List<Movimentacao> movimentacoes;
+}
