@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.example.ifbademo.model.Categoria;
 import com.example.ifbademo.model.Fornecedor;
+import com.example.ifbademo.service.CategoriaService;
 import com.example.ifbademo.service.FornecedorService;
 
 import lombok.Getter;

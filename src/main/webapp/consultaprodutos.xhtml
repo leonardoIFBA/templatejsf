@@ -9,7 +9,7 @@ and open the template in the editor.
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <ui:composition template="/WEB-INF/template/Layout.xhtml">
 
-	<ui:define name="titulo">Consulta de Fornecedores</ui:define>
+	<ui:define name="titulo">Consulta de Produtos</ui:define>
 
 	<ui:define name="corpo">
 		<h:form>
@@ -27,44 +27,48 @@ and open the template in the editor.
 				</p:toolbarGroup>
 			</p:toolbar>
 
-			<p:dataTable var="forn" value="#{consultaFornecedoresBean.fornecedores}" 
+			<p:dataTable var="prod" value="#{consultaProdutosBean.produtos}" 
 						reflow="true" paginator="true" rows="10" 
 						paginatorPosition="bottom"
 						rowsPerPageTemplate="5,10,{ShowAll|'All'}" >
 				
-				<p:column headerText="CNPJ">
-					<h:outputText value="#{forn.cnpj}" />
+				<p:column headerText="Nome" sortBy="prod.nome">
+					<h:outputText value="#{prod.nome}" />
 				</p:column>
 
-				<p:column headerText="Nome" sortBy="forn.nome">
-					<h:outputText value="#{forn.nome}" />
+				<p:column headerText="Qtde Mínima">
+					<h:outputText value="#{prod.qtdeMinima}" />
 				</p:column>
 
-				<p:column headerText="E-mail">
-					<h:outputText value="#{forn.email}" />
+				<p:column headerText="Estoque">
+					<h:outputText value="#{prod.qtdeEstoque}" />
 				</p:column>
 
-				<p:column headerText="Nome">
-					<h:outputText value="#{forn.telefone}" />
+				<p:column headerText="Unidade">
+					<h:outputText value="#{prod.unidadeMedida}" />
+				</p:column>
+
+				<p:column headerText="Categoria">
+					<h:outputText value="#{prod.categoria.nome}" />
 				</p:column>
 
 				
 				<p:column headerText="Ações">
 					<p:button title="Alterar" icon="pi pi-pencil" outcome="cadastrofornecedor">
-						<f:param name="id" value="#{forn.id}" />
+						<f:param name="id" value="#{prod.id}" />
 					</p:button>
 					<p:commandButton title="Excluir" icon="pi pi-trash"
 						process="@this" oncomplete="PF('deleteDialog').show()">
 						<f:setPropertyActionListener value="#{forn}"
-							target="#{consultaFornecedoresBean.fornecedorSelecionado}" />
+							target="#{consultaProdutosBean.produtoSelecionado}" />
 					</p:commandButton>
 				</p:column>
 
 			</p:dataTable>
 
 			<p:confirmDialog widgetVar="deleteDialog" showEffect="fade" width="350"
-				message="Exclusão de Fornecedor?"  header="Confirmação" severity="warn">
-				<p:commandButton value="Sim" icon="pi pi-check" actionListener="#{consultaFornecedoresBean.excluir()}"
+				message="Exclusão de Produto?"  header="Confirmação" severity="warn">
+				<p:commandButton value="Sim" icon="pi pi-check" actionListener="#{consultaProdutosBean.excluir()}"
 					process="@this" update="@form" oncomplete="PF('deleteDialog').hide()" />
 				<p:commandButton value="Não" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
 					process="@this" update="@form" onclick="PF('deleteDialog').hide()" />
