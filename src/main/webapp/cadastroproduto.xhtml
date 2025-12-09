@@ -33,31 +33,41 @@
 
 
 
-			<p:panelGrid id="pn" columns="2" layout="grid"  columnClasses="ui-grid-col-3,ui-grid-col-9"
+			<p:panelGrid id="pn" columns="2" layout="grid"  columnClasses="ui-grid-col-2,ui-grid-col-10"
 					styleClass="ui-panelgrid-blank ui-fluid" style="border:0px none; background-color:transparent;" >
 				
 				<p:outputLabel value="Nome:" />
 				<p:inputText value="#{cadastroProdutoBean.produto.nome}" size="30"
-							 required="true" requiredMessage="O campo Nome não pode ficar em branco"/>
-				
-				<p:outputLabel value="Qtde. Mínima:" />
-				<p:inputText value="#{cadastroProdutoBean.produto.qtdeMinima}" size="30"/>
-				
+						required="true" requiredMessage="O campo Nome não pode ficar em branco"/>
+
+				<p:outputLabel value="Qtde Mínima:" />
+				<p:inputText value="#{cadastroProdutoBean.produto.qtdeMinima}" size="30"
+				required="true" requiredMessage="O campo Nome não pode ficar em branco"/>
+
 				<p:outputLabel value="Estoque:" />
-				<p:inputText value="#{cadastroProdutoBean.produto.qtdeEstoque}" size="30"/>
+				<p:inputText value="#{cadastroProdutoBean.produto.qtdeEstoque}" size="30"
+						required="true" requiredMessage="O campo Nome não pode ficar em branco"/>
 
 				<p:outputLabel value="Unid. Medida:" />
-				<p:inputText value="#{cadastroProdutoBean.produto.unidadeMedida}" size="30"/>
-								
+				<p:inputText value="#{cadastroProdutoBean.produto.unidadeMedida}" size="30"
+							required="true" requiredMessage="O campo Nome não pode ficar em branco"/>
+									
+				<p:outputLabel value="Categoria"/>
+				<p:selectOneMenu value="#{cadastroProdutoBean.produto.categoria}">
+					<f:selectItem itemLabel="Selecione" />
+					<f:selectItems var="categ" value="#{cadastroProdutoBean.todasCategorias}" 
+						itemLabel="#{categ.nome}"/>
+					
+				</p:selectOneMenu>
 
 			</p:panelGrid>
 			
 			
-			<p:commandButton value="Salvar" actionListener="#{cadastroFornecedorBean.salvar()}"
+			<p:commandButton value="Salvar" actionListener="#{cadastroProdutoBean.salvar()}"
 								icon="pi pi-save" iconPos="right"
 								process="@all" update="@form"/>
 			<p:button title="Cancelar" value="Cancelar" icon="pi pi-undo"
-					outcome="consultafornecedores" />
+					outcome="consultaprodutos" />
 			
 		</h:form>
 

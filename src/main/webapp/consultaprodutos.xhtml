@@ -23,7 +23,7 @@ and open the template in the editor.
 			
 			<p:toolbar>
 				<p:toolbarGroup>
-					<p:button icon="pi pi-plus" value="Novo" title="Novo" outcome="cadastroproduto" />
+					<p:button icon="pi pi-plus" value="Novo" title="Novo" outcome="cadastrocategoria" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -32,34 +32,18 @@ and open the template in the editor.
 						paginatorPosition="bottom"
 						rowsPerPageTemplate="5,10,{ShowAll|'All'}" >
 				
-				<p:column headerText="Nome" sortBy="prod.nome">
+				<p:column headerText="Nome">
 					<h:outputText value="#{prod.nome}" />
-				</p:column>
-
-				<p:column headerText="Qtde Mínima">
-					<h:outputText value="#{prod.qtdeMinima}" />
-				</p:column>
-
-				<p:column headerText="Estoque">
-					<h:outputText value="#{prod.qtdeEstoque}" />
-				</p:column>
-
-				<p:column headerText="Unidade">
-					<h:outputText value="#{prod.unidadeMedida}" />
-				</p:column>
-
-				<p:column headerText="Categoria">
-					<h:outputText value="#{prod.categoria.nome}" />
 				</p:column>
 
 				
 				<p:column headerText="Ações">
-					<p:button title="Alterar" icon="pi pi-pencil" outcome="cadastrofornecedor">
+					<p:button title="Alterar" icon="pi pi-pencil" outcome="cadastrocategoria">
 						<f:param name="id" value="#{prod.id}" />
 					</p:button>
 					<p:commandButton title="Excluir" icon="pi pi-trash"
 						process="@this" oncomplete="PF('deleteDialog').show()">
-						<f:setPropertyActionListener value="#{forn}"
+						<f:setPropertyActionListener value="#{categ}"
 							target="#{consultaProdutosBean.produtoSelecionado}" />
 					</p:commandButton>
 				</p:column>
@@ -67,8 +51,8 @@ and open the template in the editor.
 			</p:dataTable>
 
 			<p:confirmDialog widgetVar="deleteDialog" showEffect="fade" width="350"
-				message="Exclusão de Produto?"  header="Confirmação" severity="warn">
-				<p:commandButton value="Sim" icon="pi pi-check" actionListener="#{consultaProdutosBean.excluir()}"
+				message="Exclusão de Cargo?"  header="Confirmação" severity="warn">
+				<p:commandButton value="Sim" icon="pi pi-check" actionListener="#{consultaCategoriasBean.excluir()}"
 					process="@this" update="@form" oncomplete="PF('deleteDialog').hide()" />
 				<p:commandButton value="Não" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
 					process="@this" update="@form" onclick="PF('deleteDialog').hide()" />

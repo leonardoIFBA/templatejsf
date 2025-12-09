@@ -17,19 +17,23 @@ public class ProdutoService {
         repository.save(p);
     }
 
+    public void excluir(Produto p){
+        repository.delete(p);
+    }
+
     public boolean excluirPorId(Long id){
-       if(!produtoTemMovimentacao(id)){
+        if (!prodtuoTemMovimentacao(id)){
             repository.deleteById(id);
             return true;
-       } else{
+        }else{
             return false;
-       }
-    }
+        }        
+    }     
 
-    public boolean produtoTemMovimentacao(Long id){
+    private boolean prodtuoTemMovimentacao(Long id) {
         return repository.existsByMovimentacoes_Id(id);
     }
-
+        
     public Produto buscarPorId(Long id){
         return repository.findById(id).get();
     }
