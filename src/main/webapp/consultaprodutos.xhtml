@@ -36,14 +36,29 @@ and open the template in the editor.
 					<h:outputText value="#{prod.nome}" />
 				</p:column>
 
+				<p:column headerText="Qtde Mim">
+					<h:outputText value="#{prod.qtdeMinima}" />
+				</p:column>
+
+				<p:column headerText="Estoque">
+					<h:outputText value="#{prod.qtdeEstoque}" />
+				</p:column>
+
+				<p:column headerText="Unidade">
+					<h:outputText value="#{prod.unidadeMedida}" />
+				</p:column>
+
+				<p:column headerText="Categoria">
+					<h:outputText value="#{prod.categoria.nome}" />
+				</p:column>
 				
 				<p:column headerText="Ações">
-					<p:button title="Alterar" icon="pi pi-pencil" outcome="cadastrocategoria">
+					<p:button title="Alterar" icon="pi pi-pencil" outcome="cadastroproduto">
 						<f:param name="id" value="#{prod.id}" />
 					</p:button>
 					<p:commandButton title="Excluir" icon="pi pi-trash"
 						process="@this" oncomplete="PF('deleteDialog').show()">
-						<f:setPropertyActionListener value="#{categ}"
+						<f:setPropertyActionListener value="#{prod}"
 							target="#{consultaProdutosBean.produtoSelecionado}" />
 					</p:commandButton>
 				</p:column>

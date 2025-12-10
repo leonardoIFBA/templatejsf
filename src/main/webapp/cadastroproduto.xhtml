@@ -53,10 +53,11 @@
 							required="true" requiredMessage="O campo Nome não pode ficar em branco"/>
 									
 				<p:outputLabel value="Categoria"/>
-				<p:selectOneMenu value="#{cadastroProdutoBean.produto.categoria}">
+				<p:selectOneMenu value="#{cadastroProdutoBean.produto.categoria}" 
+							converter="#{categoriaConverter}">
 					<f:selectItem itemLabel="Selecione" />
 					<f:selectItems var="categ" value="#{cadastroProdutoBean.todasCategorias}" 
-						itemLabel="#{categ.nome}"/>
+						itemLabel="#{categ.nome}" itemValue="#{categ}"/>
 					
 				</p:selectOneMenu>
 

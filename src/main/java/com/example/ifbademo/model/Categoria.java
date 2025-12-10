@@ -3,10 +3,11 @@ package com.example.ifbademo.model;
 import java.util.List;
 
 import javax.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter @Setter
 public class Categoria extends AbstractEntity<Long>{
 
     private String nome;

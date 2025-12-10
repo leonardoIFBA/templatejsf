@@ -15,7 +15,7 @@ public class Produto extends AbstractEntity<Long>{
     private String unidadeMedida;
     
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id_catregoria_fk")
+    @JoinColumn(name = "id_categoria_fk")
     private Categoria categoria;
 
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
