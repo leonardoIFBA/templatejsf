@@ -36,7 +36,8 @@ and open the template in the editor.
 					<h:outputText value="#{forn.cnpj}" />
 				</p:column>
 
-				<p:column headerText="Nome" sortBy="forn.nome">
+				<p:column headerText="Nome" sortBy="#{forn.nome}" 
+							filterBy="#{forn.nome}" filterMatchMode="contains">
 					<h:outputText value="#{forn.nome}" />
 				</p:column>
 

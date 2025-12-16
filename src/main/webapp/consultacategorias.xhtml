@@ -32,7 +32,8 @@ and open the template in the editor.
 						paginatorPosition="bottom"
 						rowsPerPageTemplate="5,10,{ShowAll|'All'}" >
 				
-				<p:column headerText="Nome">
+				<p:column headerText="Nome" sortBy="#{categ.nome}" sortMode="single"
+							filterBy="#{categ.nome}" filterMatchMode="contains">
 					<h:outputText value="#{categ.nome}" />
 				</p:column>
 

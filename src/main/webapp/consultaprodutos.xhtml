@@ -23,7 +23,7 @@ and open the template in the editor.
 			
 			<p:toolbar>
 				<p:toolbarGroup>
-					<p:button icon="pi pi-plus" value="Novo" title="Novo" outcome="cadastrocategoria" />
+					<p:button icon="pi pi-plus" value="Novo" title="Novo" outcome="cadastroproduto" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -32,7 +32,8 @@ and open the template in the editor.
 						paginatorPosition="bottom"
 						rowsPerPageTemplate="5,10,{ShowAll|'All'}" >
 				
-				<p:column headerText="Nome">
+				<p:column headerText="Nome" sortBy="#{prod.nome}"
+							filterBy="#{prod.nome}" filterMatchMode="contains">
 					<h:outputText value="#{prod.nome}" />
 				</p:column>
 
@@ -48,7 +49,8 @@ and open the template in the editor.
 					<h:outputText value="#{prod.unidadeMedida}" />
 				</p:column>
 
-				<p:column headerText="Categoria">
+				<p:column headerText="Categoria" filterBy="#{prod.nome}" 
+								filterMatchMode="contains">
 					<h:outputText value="#{prod.categoria.nome}" />
 				</p:column>
 				
